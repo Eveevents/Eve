@@ -209,9 +209,9 @@
         <div class="whatsapp-dropdown">
             <a href="#" class="whatsapp-btn" id="whatsapp-btn">WhatsApp</a>
             <div class="dropdown-content" id="dropdown-content">
-                <a href="https://wa.me/96181282320" target="_blank">Charbel Habchy</a>
-                <a href="https://wa.me/9613223444" target="_blank">Elie Habchy</a>
-                <a href="https://wa.me/9613070810" target="_blank">Michel Abyad</a>
+                <a href="https://wa.me/96181282320" target="_blank" class="whatsapp-link">Charbel Habchy</a>
+                <a href="https://wa.me/9613223444" target="_blank" class="whatsapp-link">Elie Habchy</a>
+                <a href="https://wa.me/9613070810" target="_blank" class="whatsapp-link">Michel Abyad</a>
             </div>
         </div>
         <a href="https://www.instagram.com/eve.eventslb?igsh=cTYzd2E1aDV1ZjJz&utm_source=qr" target="_blank">Instagram</a>
@@ -224,13 +224,14 @@
     </div>
 
     <script>
+        // Toggle dropdown visibility when the WhatsApp button is clicked
         document.getElementById('whatsapp-btn').addEventListener('click', function(event) {
             event.preventDefault();
             var dropdown = document.getElementById('dropdown-content');
             dropdown.style.display = (dropdown.style.display === 'block' ? 'none' : 'block');
         });
 
-        // Close the dropdown if the user clicks outside of it
+        // Close the dropdown if clicking anywhere outside of it
         document.addEventListener('click', function(event) {
             var dropdown = document.getElementById('dropdown-content');
             var button = document.getElementById('whatsapp-btn');
@@ -239,7 +240,16 @@
             }
         });
 
-        // Fix for mobile touch devices
+        // Ensure the dropdown closes after a link is clicked
+        var links = document.querySelectorAll('.whatsapp-link');
+        links.forEach(function(link) {
+            link.addEventListener('click', function() {
+                var dropdown = document.getElementById('dropdown-content');
+                dropdown.style.display = 'none';
+            });
+        });
+
+        // Touch event for mobile devices
         document.addEventListener('touchstart', function(event) {
             var dropdown = document.getElementById('dropdown-content');
             var button = document.getElementById('whatsapp-btn');
