@@ -15,27 +15,25 @@
         }
 
         /* Header Section with Full-Width Image */
-        /* Header Section with Full-Width Image */
-.header {
-    position: relative;
-    width: 100%;
-    height: 250px; /* Default height for large screens */
-    background: url('images/logo.jpeg') no-repeat center center / cover; /* Full-width image */
-}
+        .header {
+            position: relative;
+            width: 100%;
+            height: 250px; /* Default height for large screens */
+            background: url('images/logo.jpeg') no-repeat center center / cover; /* Full-width image */
+        }
 
-/* Adjust header image height for smaller screens */
-@media (max-width: 768px) {
-    .header {
-        height: 200px; /* Reduced height for tablets */
-    }
-}
+        /* Adjust header image height for smaller screens */
+        @media (max-width: 768px) {
+            .header {
+                height: 200px; /* Reduced height for tablets */
+            }
+        }
 
-@media (max-width: 480px) {
-    .header {
-        height: 180px; /* Further reduce the height for mobile phones */
-    }
-}
-
+        @media (max-width: 480px) {
+            .header {
+                height: 180px; /* Further reduce the height for mobile phones */
+            }
+        }
 
         /* Title Section Below the Image */
         .title {
@@ -146,11 +144,6 @@
             color: black;
         }
 
-        /* Show Dropdown on Hover */
-        .whatsapp-dropdown:hover .dropdown-content {
-            display: block;
-        }
-
         /* Footer Section */
         .footer {
             margin-top: 50px;
@@ -170,19 +163,16 @@
 
         /* Responsive Styles */
         @media (max-width: 768px) {
-            /* Title section font size for tablets */
             .title h1 {
                 font-size: 2.5rem;
             }
 
-            /* Buttons Section: Stack buttons vertically */
             .buttons {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
             }
 
-            /* WhatsApp Button: Adjust padding and size */
             .whatsapp-btn {
                 padding: 12px 30px;
                 font-size: 16px;
@@ -194,17 +184,14 @@
         }
 
         @media (max-width: 480px) {
-            /* Title section font size for mobile phones */
             .title h1 {
                 font-size: 2rem;
             }
 
-            /* Adjust header image height for smaller screens */
             .header {
                 height: 200px;
             }
 
-            /* Buttons Section: Further adjust the size for smaller screens */
             .buttons a {
                 padding: 12px 30px;
                 font-size: 16px;
@@ -234,8 +221,8 @@
     <div class="buttons">
         <!-- WhatsApp Button with Redesigned Hover -->
         <div class="whatsapp-dropdown">
-            <a href="#" class="whatsapp-btn">WhatsApp</a>
-            <div class="dropdown-content">
+            <a href="#" class="whatsapp-btn" id="whatsapp-btn">WhatsApp</a>
+            <div class="dropdown-content" id="dropdown-content">
                 <a href="https://wa.me/96181282320" target="_blank">Charbel Habchy</a>
                 <a href="https://wa.me/9613223444" target="_blank">Elie Habchy</a>
                 <a href="https://wa.me/9613070810" target="_blank">Michel Abyad</a>
@@ -250,5 +237,14 @@
     <div class="footer">
         <p>© 2025 Eve Event Planning. All Rights Reserved. | <a href="#">Privacy Policy</a></p>
     </div>
+
+    <script>
+        // JavaScript to toggle the visibility of the WhatsApp dropdown
+        document.getElementById('whatsapp-btn').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default anchor action
+            var dropdown = document.getElementById('dropdown-content');
+            dropdown.style.display = (dropdown.style.display === 'block' ? 'none' : 'block');
+        });
+    </script>
 </body>
 </html>
