@@ -15,28 +15,19 @@
         }
 
         /* Header Section with Full-Width Image */
-        /* Header Section with Full-Width Image */
-.header {
-    position: relative;
-    width: 100%;
-    height: 250px; /* Default height for large screens */
-    background: url('images/logo.jpeg') no-repeat center center / cover; /* Full-width image */
-    background-size: cover; /* Ensure the image covers the container */
-    background-position: center center; /* Center the image */
-}
+        .header {
+            position: relative;
+            width: 100%;
+            height: 250px; /* Default height for large screens */
+            overflow: hidden;
+        }
 
-/* Adjust header image height for smaller screens */
-@media (max-width: 768px) {
-    .header {
-        height: 200px; /* Reduced height for tablets */
-    }
-}
-
-@media (max-width: 480px) {
-    .header {
-        height: 180px; /* Further reduce the height for mobile phones */
-    }
-}
+        .header img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures the image fills the container without distortion */
+            object-position: center; /* Keeps the image centered */
+        }
 
         /* Adjust header image height for smaller screens */
         @media (max-width: 768px) {
@@ -160,6 +151,11 @@
             color: black;
         }
 
+        /* Show Dropdown on Hover */
+        .whatsapp-dropdown:hover .dropdown-content {
+            display: block;
+        }
+
         /* Footer Section */
         .footer {
             margin-top: 50px;
@@ -179,16 +175,19 @@
 
         /* Responsive Styles */
         @media (max-width: 768px) {
+            /* Title section font size for tablets */
             .title h1 {
                 font-size: 2.5rem;
             }
 
+            /* Buttons Section: Stack buttons vertically */
             .buttons {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
             }
 
+            /* WhatsApp Button: Adjust padding and size */
             .whatsapp-btn {
                 padding: 12px 30px;
                 font-size: 16px;
@@ -200,14 +199,17 @@
         }
 
         @media (max-width: 480px) {
+            /* Title section font size for mobile phones */
             .title h1 {
                 font-size: 2rem;
             }
 
+            /* Adjust header image height for smaller screens */
             .header {
                 height: 200px;
             }
 
+            /* Buttons Section: Further adjust the size for smaller screens */
             .buttons a {
                 padding: 12px 30px;
                 font-size: 16px;
@@ -225,8 +227,10 @@
     </style>
 </head>
 <body>
-    <!-- Header Section with Full-Width Background Image -->
-    <div class="header"></div>
+    <!-- Header Section with Full-Width Image -->
+    <div class="header">
+        <img src="images/logo.jpeg" alt="Eve Event Planning Logo">
+    </div>
 
     <!-- Title Section Below the Image -->
     <div class="title">
@@ -237,8 +241,8 @@
     <div class="buttons">
         <!-- WhatsApp Button with Redesigned Hover -->
         <div class="whatsapp-dropdown">
-            <a href="#" class="whatsapp-btn" id="whatsapp-btn">WhatsApp</a>
-            <div class="dropdown-content" id="dropdown-content">
+            <a href="#" class="whatsapp-btn">WhatsApp</a>
+            <div class="dropdown-content">
                 <a href="https://wa.me/96181282320" target="_blank">Charbel Habchy</a>
                 <a href="https://wa.me/9613223444" target="_blank">Elie Habchy</a>
                 <a href="https://wa.me/9613070810" target="_blank">Michel Abyad</a>
@@ -253,23 +257,5 @@
     <div class="footer">
         <p>© 2025 Eve Event Planning. All Rights Reserved. | <a href="#">Privacy Policy</a></p>
     </div>
-
-    <script>
-        // JavaScript to toggle the visibility of the WhatsApp dropdown
-        document.getElementById('whatsapp-btn').addEventListener('click', function(event) {
-            event.preventDefault(); // Prevent default anchor action
-            var dropdown = document.getElementById('dropdown-content');
-            dropdown.style.display = (dropdown.style.display === 'block' ? 'none' : 'block');
-        });
-
-        // Close the dropdown if the user clicks outside of it
-        document.addEventListener('click', function(event) {
-            var dropdown = document.getElementById('dropdown-content');
-            var button = document.getElementById('whatsapp-btn');
-            if (!button.contains(event.target) && !dropdown.contains(event.target)) {
-                dropdown.style.display = 'none';
-            }
-        });
-    </script>
 </body>
 </html>
