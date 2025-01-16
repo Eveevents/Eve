@@ -16,34 +16,31 @@
 
         /* Header Section with Full-Width Image */
         .header {
-            position: relative;
-            width: 100%;
-            height: 40vh; /* Dynamic height based on viewport height */
-            background: url('images/logo.jpeg') no-repeat center center;
-            background-size: contain; /* Ensure the whole image fits within the container */
-            background-position: center center; /* Center the image */
-        }
+    position: relative;
+    width: 100%;
+    height: 40vh; /* Dynamic height based on viewport height */
+    background: url('images/logo.jpeg') no-repeat center center;
+    background-size: contain; /* Ensure the whole image fits within the container */
+    background-position: center center; /* Center the image */
+}
 
-        @media (max-width: 768px) {
-            .header {
-                height: 35vh; /* Adjust for tablets */
-                background-size: contain;
-                position: fixed;
-                z-index: 1000;
-            }
-        }
+@media (max-width: 768px) {
+    .header {
+        height: 35vh; /* Adjust for tablets */
+        background-size: contain;
+    }
+}
 
-        @media (max-width: 480px) {
-            .header {
-                height: 30vh; /* Adjust for smaller screens like iPhones */
-                background-size: contain;
-                position: fixed;
-                z-index: 1000;
-            }
-        }
+@media (max-width: 480px) {
+    .header {
+        height: 30vh; /* Adjust for smaller screens like iPhones */
+        background-size: contain;
+    }
+}
 
-        .content {
-            margin-top: 40vh; /* Push content below fixed header */
+
+        .title {
+            margin-top: 20px;
         }
 
         .title h1 {
@@ -187,6 +184,10 @@
                 font-size: 2rem;
             }
 
+            .header {
+                height: 200px;
+            }
+
             .buttons a {
                 padding: 12px 30px;
                 font-size: 16px;
@@ -205,29 +206,63 @@
 </head>
 <body>
     <div class="header"></div>
-    <div class="content">
-        <div class="title">
-            <h1>Event Planning</h1>
-        </div>
+    <div class="title">
+        <h1>Event Planning</h1>
+    </div>
 
-        <div class="buttons">
-            <div class="whatsapp-dropdown">
-                <a href="#" class="whatsapp-btn" id="whatsapp-btn">WhatsApp</a>
-                <div class="dropdown-content" id="dropdown-content">
-                    <a href="https://wa.me/96181282320" target="_blank" class="whatsapp-link">Charbel Habchy</a>
-                    <a href="https://wa.me/9613223444" target="_blank" class="whatsapp-link">Elie Habchy</a>
-                    <a href="https://wa.me/9613070810" target="_blank" class="whatsapp-link">Michel Abyad</a>
-                </div>
+    <div class="buttons">
+        <div class="whatsapp-dropdown">
+            <a href="#" class="whatsapp-btn" id="whatsapp-btn">WhatsApp</a>
+            <div class="dropdown-content" id="dropdown-content">
+                <a href="https://wa.me/96181282320" target="_blank" class="whatsapp-link">Charbel Habchy</a>
+                <a href="https://wa.me/9613223444" target="_blank" class="whatsapp-link">Elie Habchy</a>
+                <a href="https://wa.me/9613070810" target="_blank" class="whatsapp-link">Michel Abyad</a>
             </div>
-            <a href="https://www.instagram.com/eve.eventslb?igsh=cTYzd2E1aDV1ZjJz&utm_source=qr" target="_blank">Instagram</a>
-            <a href="https://www.facebook.com/share/12FPCraLiKB/?mibextid=wwXIfr" target="_blank">Facebook</a>
-            <a href="https://www.tiktok.com/@eve.eventslb?is_from_webapp=1&sender_device=pc" target="_blank">TikTok</a>
-            <a href="https://maps.app.goo.gl/WTnr4jk4S4V61b8t5?g_st=com.google.maps.preview.copy" target="_blank">Location</a>
         </div>
+        <a href="https://www.instagram.com/eve.eventslb?igsh=cTYzd2E1aDV1ZjJz&utm_source=qr" target="_blank">Instagram</a>
+        <a href="https://www.facebook.com/share/12FPCraLiKB/?mibextid=wwXIfr" target="_blank">Facebook</a>
+        <a href="https://www.tiktok.com/@eve.eventslb?is_from_webapp=1&sender_device=pc" target="_blank">TikTok</a>
+		<a href="https://maps.app.goo.gl/WTnr4jk4S4V61b8t5?g_st=com.google.maps.preview.copy" target="_blank">Location</a>
     </div>
 
     <div class="footer">
         <p>© 2025 Eve Event Planning. All Rights Reserved. | <a href="#">Privacy Policy</a></p>
     </div>
+
+    <script>
+        // Toggle dropdown visibility when the WhatsApp button is clicked
+        document.getElementById('whatsapp-btn').addEventListener('click', function(event) {
+            event.preventDefault();
+            var dropdown = document.getElementById('dropdown-content');
+            dropdown.style.display = (dropdown.style.display === 'block' ? 'none' : 'block');
+        });
+
+        // Close the dropdown if clicking anywhere outside of it
+        document.addEventListener('click', function(event) {
+            var dropdown = document.getElementById('dropdown-content');
+            var button = document.getElementById('whatsapp-btn');
+            if (!button.contains(event.target) && !dropdown.contains(event.target)) {
+                dropdown.style.display = 'none';
+            }
+        });
+
+        // Ensure the dropdown closes after a link is clicked
+        var links = document.querySelectorAll('.whatsapp-link');
+        links.forEach(function(link) {
+            link.addEventListener('click', function() {
+                var dropdown = document.getElementById('dropdown-content');
+                dropdown.style.display = 'none';
+            });
+        });
+
+        // Prevent dropdown from closing if a mobile user clicks inside the dropdown
+        document.addEventListener('touchstart', function(event) {
+            var dropdown = document.getElementById('dropdown-content');
+            var button = document.getElementById('whatsapp-btn');
+            if (!button.contains(event.target) && !dropdown.contains(event.target)) {
+                dropdown.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>
